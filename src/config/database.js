@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
+import "dotenv/config";
 
 export async function connectDb() {
-    const mongoUrl = "mongodb+srv://admin:admin@dio-wallet-cluster.dqlxkdj.mongodb.net/?retryWrites=true&w=majority&appName=dio-wallet-cluster"
-
+    
     try {
-        await mongoose.connect(mongoUrl);
+        await mongoose.connect(process.env.DATABASE_URI);
         console.log("MongoDB Atlas conectado")
     } catch(err) {
         console.log(err.message);
