@@ -10,6 +10,8 @@ const app = express(); // criando uma const app que executa o express
 app.use(json());
 app.use(authRouter);
 
+
+
 //instalei p npm i dotenv
 //cria o arquivo .env
 const port = process.env.PORT
