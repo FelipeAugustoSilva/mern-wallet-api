@@ -1,6 +1,9 @@
 import express, { json } from 'express'; //importei o express, meu packeage está com type: module
 import authRouter from "./routes/authRoutes.js";
+import transactionRouter from "./routes/transactionRoutes.js"
+
 import { connectDb } from "./config/database.js";
+
 
 connectDb();
 
@@ -9,6 +12,7 @@ const app = express(); // criando uma const app que executa o express
 
 app.use(json());
 app.use(authRouter);
+app.use(transactionRouter);
 
 
 
