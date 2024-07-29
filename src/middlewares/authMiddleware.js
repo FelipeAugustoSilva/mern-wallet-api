@@ -20,7 +20,14 @@ export async function authMiddleware(req, res, next) {
     jwt.verify(token, process.env.SECRET, async (err, decode) => {
         if(err) return res.status(401).send({ message: "Invalid token" });
         if(!decode) return res.status(401).send({ message: "Invalid token" });
+
+        const user = await authRepository.findById(decode.id);
+        if (!user) return res.status(401).send({ message: "Invalid Token" });
+
+        res.locals.user = user;
+
+        next();
     } );
 
-    next();
+
 }
