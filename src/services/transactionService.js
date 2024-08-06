@@ -7,4 +7,8 @@ async function create( body, id) {
 
 }
 
-export default { create }
+async function findAllByUser(id){
+    return await transactionRepository.findAllByUser(id);
+}
+
+export default { create, findAllByUser }
